@@ -11,7 +11,16 @@
 #include"raygui.h"
 #include"style_enefete.h"
 
-extern void confw_run(void);
+typedef enum ConfwResult
+{
+  FullscreenMode,
+  RectangleMode,
+  ConfigMode,
+  NoMode
+} ConfwResult;
+extern ConfwResult confw_state;
+
+extern ConfwResult confw_run(void);
 extern void _confw_draw(void);
 
 extern void _confw_draw_start(void);
