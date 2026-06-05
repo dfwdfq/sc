@@ -9,7 +9,8 @@ StartwResult startw_run(void)
   InitWindow(200, 110, "sc");
   GuiLoadStyleEnefete();
   SetTargetFPS(60);
-
+  startw_state = NoMode;
+  
   while(!WindowShouldClose())
     {
       if(startw_state != NoMode) break;
