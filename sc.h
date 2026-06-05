@@ -5,12 +5,15 @@
 #include<string.h>
 #include<stdbool.h>
 #include<stdio.h>
+#include<time.h>
 #include"raygui.h"
+#include"x11screenshot.h"
 
 typedef enum State
 {
   StartMenu,
   ConfMenu,
+  FullscreenMode,
 } State;
 
 extern State sc_state;
@@ -22,11 +25,15 @@ extern char save_dir[255];
 
 
 extern void sc_run(void);
+extern void take_fullscreen_pic(void);
 
 //startw.c
 extern void _startw_draw(void);
 
 //confw.c
 extern void _confw_draw(void);
+
+//util.c
+extern void get_file_name(char* output);
 
 #endif /* SC_H */
