@@ -13,6 +13,8 @@ void _startw_draw(void)
   if(GuiButton((Rectangle){0,70,200,20}, "[R]ectangle  ") ||
      IsKeyPressed(KEY_R))
     {
+      sc_state = RectangleMode;
+      SetWindowSize(width,height);
     }
   if(GuiButton((Rectangle){0,90,200,20}, "[C]onfig menu") ||
      IsKeyPressed(KEY_C))
