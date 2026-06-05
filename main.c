@@ -1,16 +1,7 @@
-#include"startw.h"
+#include"sc.h"
+
 int main(void)
 {
-  StartwResult res = startw_run();
-  switch(res)
-    {
-    case FullscreenMode:
-      break;
-    case RectangleMode:
-      break;
-    case ConfigMode:
-      break;
-    }
-  
+  sc_run();
   return 0;
 }

@@ -1,25 +1,10 @@
-#include "confw.h"
-#include"style_enefete.h"
+#include "sc.h"
+
 
 int width = 100, height = 100;
 bool width_edit = false, height_edit = false, text_edit = false;
 char save_dir[255];
 
-void confw_run(void)
-{
-  InitWindow(200,150,"sc: config menu");
-  GuiLoadStyleEnefete();
-  SetTargetFPS(60);
-  
-  while(!WindowShouldClose())
-    {
-      BeginDrawing();
-      ClearBackground(GetColor(GuiGetStyle(DEFAULT,BACKGROUND_COLOR)));
-      _confw_draw();
-      EndDrawing();      
-    }
-  CloseWindow();
-}
 void _confw_draw(void)
 {
   GuiLabel((Rectangle){0,5,150,20}, "#64# Configuration menu");
@@ -38,6 +23,13 @@ void _confw_draw(void)
   if(GuiTextBox((Rectangle){65,100,130,20}, save_dir, 255, text_edit))
     {
       text_edit = !text_edit;
+    }
+
+  if(GuiButton((Rectangle){65,125,130,20}, "[B]ack") ||
+     IsKeyPressed(KEY_B))
+    {
+      SetWindowSize(200, 110);
+      sc_state = StartMenu;
     }
 }
 
