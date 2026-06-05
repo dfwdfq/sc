@@ -64,10 +64,20 @@ void take_fullscreen_pic(void)
       .mipmaps = 1
     };
 
+  
   char full[1024];
   char name[255];
   get_file_name(name);
-  sprintf(full,"%s/%s.png",save_dir,name);
+  if(save_dir[0] == '~')    
+    {
+      char* dir = expand_homedir(save_dir);
+      sprintf(full,"%s%s.png",dir,name);
+      free(dir);
+    }
+  else
+    {
+      sprintf(full,"%s%s.png",save_dir,name);
+    }
   
   ExportImage(screenshot, full);
   UnloadImage(screenshot); 
@@ -76,3 +86,4 @@ void take_fullscreen_pic(void)
   SetWindowSize(200, 110);
   SetWindowPosition(pos.x, pos.y);
 }
+

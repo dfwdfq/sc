@@ -9,9 +9,26 @@ void get_file_name(char* output)
     
   time(&rawtime);
   timeinfo = localtime(&rawtime);
-    
+
   sprintf(output, "screenshot_%d%d%d%d%d%d", timeinfo->tm_mday,
 	  timeinfo->tm_mon + 1, timeinfo->tm_year + 1900,
 	  timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec);
 }
+char* expand_homedir(char* path)
+{
+  const char* home = getenv("HOME");
+  if(!home)
+    {
+      fprintf(stderr,"sc error: failed to get $HOME!");
+      return NULL;
+    }
 
+  char* res = malloc((strlen(home)+strlen(path)));
+  if(!res)
+    {
+      perror("malloc");
+      return NULL;
+    }
+  sprintf(res, "%s%s/",home,path+1);
+  return res;
+}

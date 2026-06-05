@@ -35,5 +35,6 @@ extern void _confw_draw(void);
 
 //util.c
 extern void get_file_name(char* output);
+extern char* expand_homedir(char* path);
 
 #endif /* SC_H */
