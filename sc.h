@@ -14,6 +14,7 @@ typedef enum State
   StartMenu,
   ConfMenu,
   FullscreenMode,
+  RectangleMode,
 } State;
 
 extern State sc_state;
@@ -26,6 +27,8 @@ extern char save_dir[255];
 
 extern void sc_run(void);
 extern void take_fullscreen_pic(void);
+extern void take_rectangle_pic(void);
+extern void save_img(X11Image* ximg);
 
 //startw.c
 extern void _startw_draw(void);

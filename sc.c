@@ -3,8 +3,9 @@
 #include"style_enefete.h"
 
 State sc_state = StartMenu;
-RenderTexture2D target;
-bool fullscreen_mode_ready = false;
+int width = 250;
+int height=200;
+
 void sc_run(void)
 {
   SetConfigFlags(FLAG_WINDOW_TRANSPARENT | FLAG_WINDOW_TOPMOST);
@@ -16,7 +17,8 @@ void sc_run(void)
     {
       BeginDrawing();
       
-      if(sc_state == FullscreenMode)
+      if(sc_state == FullscreenMode ||
+	 sc_state == RectangleMode)
 	ClearBackground(BLANK);
       else
 	ClearBackground(GetColor(GuiGetStyle(DEFAULT,BACKGROUND_COLOR)));
@@ -32,12 +34,40 @@ void sc_run(void)
 	case FullscreenMode:
 	  take_fullscreen_pic();
 	  break;
+	case RectangleMode:
+	  take_rectangle_pic();
+	  break;
 	}
       
       EndDrawing();
 
     }
   CloseWindow();
+}
+void take_rectangle_pic(void)
+{
+  if(IsKeyReleased(KEY_LEFT) ||
+     IsKeyPressed(KEY_A))
+    {
+      //width-=1;
+    }
+  
+
+  if(IsKeyReleased(KEY_ENTER) ||
+     IsKeyPressed(KEY_SPACE))
+    {
+      Vector2 pos = GetWindowPosition();
+
+      X11Image ximg = take_x11_screenshot((int)pos.x,
+					  (int)pos.y,
+					  width,
+					  height);
+      save_img(&ximg);
+      
+      sc_state = StartMenu;
+      SetWindowSize(200, 110);
+      SetWindowPosition(pos.x, pos.y);
+    }
 }
 void take_fullscreen_pic(void)
 {
@@ -46,8 +76,16 @@ void take_fullscreen_pic(void)
   Vector2 pos = GetWindowPosition();
   WaitTime(1.0);
   
-  X11Image ximg = take_x11_screenshot();
-  if (!ximg.data)
+  X11Image ximg = take_x11_screenshot(-1,-1,-1,-1);
+  save_img(&ximg);
+
+  sc_state = StartMenu;
+  SetWindowSize(200, 110);
+  SetWindowPosition(pos.x, pos.y);
+}
+void save_img(X11Image* ximg)
+{
+  if (!ximg->data)
     {
       fprintf(stderr,"Failed to capture screenshot\n");
       sc_state = StartMenu;
@@ -57,9 +95,9 @@ void take_fullscreen_pic(void)
   
   Image screenshot =
     {
-      .data = ximg.data,
-      .width = ximg.width,
-      .height = ximg.height,
+      .data = ximg->data,
+      .width = ximg->width,
+      .height = ximg->height,
       .format = PIXELFORMAT_UNCOMPRESSED_R8G8B8A8,
       .mipmaps = 1
     };
@@ -80,10 +118,5 @@ void take_fullscreen_pic(void)
     }
   
   ExportImage(screenshot, full);
-  UnloadImage(screenshot); 
-    
-  sc_state = StartMenu;
-  SetWindowSize(200, 110);
-  SetWindowPosition(pos.x, pos.y);
+  UnloadImage(screenshot);   
 }
-
