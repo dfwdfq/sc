@@ -3,7 +3,7 @@
 
 int width = 480, height=640;
 bool width_edit = false, height_edit = false, text_edit = false;
-char save_dir[255] = "~/Pictures/";
+char save_dir[255] ="~/Pictures";
 
 void _confw_draw(void)
 {
