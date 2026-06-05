@@ -9,7 +9,7 @@
 #include<stdbool.h>
 #include<stdio.h>
 #include"raygui.h"
-#include"style_enefete.h"
+
 
 typedef enum StartwResult
 {
