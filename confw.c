@@ -1,7 +1,7 @@
 #include "sc.h"
 
 
-int width = 100, height = 100;
+int width = 480, height=640;
 bool width_edit = false, height_edit = false, text_edit = false;
 char save_dir[255];
 
@@ -12,11 +12,11 @@ void _confw_draw(void)
   GuiLabel((Rectangle){0,60,100,20}, "#119# height:");
   GuiLabel((Rectangle){0,100,100,20}, "#1# save:");
   
-  if(GuiValueBox((Rectangle){65,30,130,20}, NULL, &width, 0, 100, width_edit))
+  if(GuiValueBox((Rectangle){65,30,130,20}, NULL, &width, 0, 1920, width_edit))
     {
       width_edit = !width_edit;
     }
-  if(GuiValueBox((Rectangle){65,60,130,20}, NULL, &height, 0, 100, height_edit))
+  if(GuiValueBox((Rectangle){65,60,130,20}, NULL, &height, 0, 1080, height_edit))
     {
       height_edit = !height_edit;
     }
