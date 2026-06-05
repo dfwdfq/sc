@@ -4,7 +4,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-X11Image take_x11_screenshot(void)
+X11Image take_x11_screenshot(int start_x,
+			     int start_y,
+			     int win_width,
+			     int win_height)
 {
   X11Image result = {NULL, 0, 0};
   Display *dpy = XOpenDisplay(NULL);
@@ -13,10 +16,13 @@ X11Image take_x11_screenshot(void)
 
   int screen = DefaultScreen(dpy);
   Window root = RootWindow(dpy, screen);
-  int width = DisplayWidth(dpy, screen);
-  int height = DisplayHeight(dpy, screen);
   
-  XImage *image = XGetImage(dpy, root, 0, 0, width, height, AllPlanes, ZPixmap);
+  int width = win_width   == -1? DisplayWidth(dpy, screen) : win_width;
+  int height = win_height ==-1 ? DisplayHeight(dpy, screen): win_height;
+  int _x = start_x == -1?0:start_x;
+  int _y = start_y == -1?0:start_y;
+  
+  XImage *image = XGetImage(dpy, root, _x, _y, width, height, AllPlanes, ZPixmap);
     if (!image)
       {
         XCloseDisplay(dpy);

@@ -10,6 +10,10 @@ typedef struct
   int height;
 } X11Image;
 
-extern X11Image take_x11_screenshot(void);
+//if all arguments are -1, then fullscreen
+extern X11Image take_x11_screenshot(int start_x,
+				    int start_y,
+				    int win_width,
+				    int win_height);
 
 #endif /* X11SCREENSHOT_H */
