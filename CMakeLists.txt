@@ -9,7 +9,7 @@ file(GLOB HEADERS "*.h")
 
 
 set(COMMON_COMPILE_OPTIONS -O2 -DNDEBUG -s -flto -Wall -Wextra -std=c99 -fno-strict-aliasing)
-set(COMMON_LIBS m raylib GL pthread dl rt)
+set(COMMON_LIBS m raylib GL pthread dl rt X11)
 
 add_executable(sc ${SOURCES} ${HEADERS})
 
