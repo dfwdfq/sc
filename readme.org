@@ -18,3 +18,31 @@ If *Xlib* and *Raylib* are installed, then it's simple:
   cmake -S .. -B
   make
 #+END_SRC
+
+* About picom
+#+BEGIN_VERSE
+My =WM= is Qtile. Without *picom* it's impossible to create
+transparent window. It's required by program logic to be able
+to create window with /blank/ background color.
+#+END_VERSE
+** My Qtile config snippet
+#+BEGIN_VERSE
+The following snippet shows the way to run
+*picom* in the background in case of Qtile.
+#+END_VERSE
+#+BEGIN_SRC python
+@hook.subscribe.startup_once
+def start_picom():
+    os.system("picom &")
+#+END_SRC
+* About tiling managers
+#+BEGIN_VERSE
+Before I made this program, my way to take screenshots was not
+obvious and simple. I used [[https://github.com/Beykir/shotgun][shotgun]] to take screenshots, but it's CLI.
+So I used to take screenshot of entire screen, then crop what I need with
+[[https://github.com/hdvpdrm/cropper][cropper]]. It's too ridiculos, so I deicided to write my own tool.
+#+END_VERSE
+#+BEGIN_VERSE
+*sc* provides keyboard-driven controls, but you can use mouse if you wish.
+That's why it fits into environment controlled by *tiling* window manager.
+#+END_VERSE
