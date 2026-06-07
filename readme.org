@@ -21,8 +21,9 @@ If *Xlib* and *Raylib* are installed, then it's simple:
 
 * About picom
 My =WM= is Qtile. Without *picom* it's impossible to create
-transparent window. It's required by program logic to be able
-to create window with /blank/ background color.
+transparent window.
+
+It's required by program logic to be able to create window with /blank/ background color.
 ** My Qtile config snippet
 The following snippet shows the way to run
 *picom* in the background in case of Qtile.
@@ -33,8 +34,19 @@ def start_picom():
 #+END_SRC
 * About tiling managers
 Before I made this program, my way to take screenshots was not
-obvious and simple. I used [[https://github.com/Beykir/shotgun][shotgun]] to take screenshots, but it's CLI.
+obvious and simple.
+
+I used [[https://github.com/Beykir/shotgun][shotgun]] to take screenshots, but it's CLI.
 So I used to take screenshot of entire screen, then crop what I need with
-[[https://github.com/hdvpdrm/cropper][cropper]]. It's too ridiculos, so I deicided to write my own tool.
+[[https://github.com/hdvpdrm/cropper][cropper]].
+
+It's too ridiculos, so I deicided to write my own tool.
+
+
 *sc* provides keyboard-driven controls, but you can use mouse if you wish.
 That's why it fits into environment controlled by *tiling* window manager.
+
+* *sc* workflow
+When you execute program, first thing you see is initial menu.
+[[imgs/start_menu.png]]
+
