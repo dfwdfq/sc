@@ -51,3 +51,8 @@ When you execute program, first thing you see is initial menu.
 
 [[imgs/start_menu.png]]
 
+You have *3* buttons. Each button is associated with a *key*.
+- [F]ullscreen   :: press button or press *F* to create fullscreen screenshot.
+- *[R]ectangle*    :: press button or press *R* to start choosing rectangular area.
+- *[C]config menu* :: opens config menu.
+
