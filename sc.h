@@ -15,6 +15,7 @@ typedef enum State
   ConfMenu,
   FullscreenMode,
   RectangleMode,
+  MessageBox
 } State;
 
 extern State sc_state;
@@ -25,6 +26,7 @@ extern bool width_edit, height_edit, text_edit, step_edit;
 extern int step;
 extern int rx,ry;
 extern char save_dir[255];
+extern char last_save[1060];
 extern Color rect_color;
 extern Vector2 before_rect_wpos;
 
@@ -34,6 +36,7 @@ extern void take_fullscreen_pic(void);
 extern void take_rectangle_pic(void);
 extern void save_img(X11Image* ximg);
 extern void draw_rect(void);
+extern void draw_message_box(void);
 
 //startw.c
 extern void _startw_draw(void);

@@ -10,6 +10,7 @@ int rx = 100;
 int ry = 100;
 Color rect_color = MAGENTA;
 Vector2 before_rect_wpos;
+char last_save[1060];
 
 void sc_run(void)
 {
@@ -42,8 +43,11 @@ void sc_run(void)
 	case RectangleMode:
 	  take_rectangle_pic();
 	  break;
+	case MessageBox:
+	  draw_message_box();
+	  break;
 	}
-      
+
       EndDrawing();
 
     }
@@ -145,8 +149,7 @@ void take_rectangle_pic(void)
 					  height);
       save_img(&ximg);
       
-      sc_state = StartMenu;
-      SetWindowSize(200, 110);
+      SetWindowSize(400, 100);
       SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
     }  
 }
@@ -160,8 +163,7 @@ void take_fullscreen_pic(void)
   X11Image ximg = take_x11_screenshot(-1,-1,-1,-1);
   save_img(&ximg);
 
-  sc_state = StartMenu;
-  SetWindowSize(200, 110);
+  SetWindowSize(400, 100);
   SetWindowPosition(pos.x, pos.y);
 }
 void save_img(X11Image* ximg)
@@ -197,9 +199,11 @@ void save_img(X11Image* ximg)
     {
       sprintf(full,"%s%s.png",save_dir,name);
     }
-  
+
+  sprintf(last_save, "#112# %s.png\0", full);
   ExportImage(screenshot, full);
-  UnloadImage(screenshot);   
+  UnloadImage(screenshot);
+  sc_state = MessageBox;
 }
 void draw_rect(void)
 {
@@ -208,4 +212,15 @@ void draw_rect(void)
   DrawRectangle(rx, ry, 2, height, rect_color);
   DrawRectangle(rx+width, ry, 2, height, rect_color);
 }
+void draw_message_box(void)
+{
+  GuiLabel((Rectangle){10,10,180,20}, "Screenshot saved:");
+  GuiLabel((Rectangle){10,30,345,40}, last_save);
 
+  if(GuiButton((Rectangle){160,70,60,20}, "[O]k") ||
+     IsKeyPressed(KEY_O))
+    {
+      SetWindowSize(200, 110);
+      sc_state = StartMenu;
+    }
+}
