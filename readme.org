@@ -78,3 +78,14 @@ by rectangle with +magenta+ color.
 ** Notes
 - hit *SPACE* before pressing *ENTER*, unless you want to see rectangle's border on screenshot picture.
 - rectangle's step equals to 1 by default.  
+
+* Config menu
+[[imgs/conf_menu.png]]
+
+** Available options to configure
+- *width*   :: determines width of rectangle
+- *height*  :: determines height of rectangle
+- *step*    :: determines rectangle's step
+- *save*    :: determines directory where screenshots are saved
+** Note
+Press *B* to get back to start menu. Or click button.
