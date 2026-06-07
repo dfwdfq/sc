@@ -1,2 +1,8 @@
 #+title: sc
 X11 screenshot tool for tiling window managers
+
+* Dependencies
+- Raylib
+- Raygui /(included in repo)/
+- Xlib
+
