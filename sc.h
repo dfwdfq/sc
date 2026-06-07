@@ -21,7 +21,7 @@ extern State sc_state;
 
 //confw.c
 extern int width, height;
-extern bool width_edit, height_edit, text_edit;
+extern bool width_edit, height_edit, text_edit, step_edit;
 extern int step;
 extern int rx,ry;
 extern char save_dir[255];
