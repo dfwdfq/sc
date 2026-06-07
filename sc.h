@@ -33,6 +33,7 @@ extern void sc_run(void);
 extern void take_fullscreen_pic(void);
 extern void take_rectangle_pic(void);
 extern void save_img(X11Image* ximg);
+extern void draw_rect(void);
 
 //startw.c
 extern void _startw_draw(void);
@@ -43,5 +44,4 @@ extern void _confw_draw(void);
 //util.c
 extern void get_file_name(char* output);
 extern char* expand_homedir(char* path);
-extern void draw_rect(void);
 #endif /* SC_H */

@@ -100,6 +100,16 @@ void take_rectangle_pic(void)
       rx = pos.x;
       ry = pos.y;
     }
+  if(IsMouseButtonReleased(MOUSE_BUTTON_RIGHT))
+    {
+      Vector2 pos = GetMousePosition();
+      if(pos.x > rx &&
+	 pos.y > ry)
+	{
+	  width = pos.x - rx;
+	  height = pos.y - ry;
+	}
+    }
 
   if(IsKeyReleased(KEY_Q))
     {
@@ -198,3 +208,4 @@ void draw_rect(void)
   DrawRectangle(rx, ry, 2, height, rect_color);
   DrawRectangle(rx+width, ry, 2, height, rect_color);
 }
+
