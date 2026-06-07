@@ -14,7 +14,7 @@ void _startw_draw(void)
      IsKeyPressed(KEY_R))
     {
       sc_state = RectangleMode;
-      
+      before_rect_wpos = GetWindowPosition();
       int m = GetCurrentMonitor();
       SetWindowPosition(0, 0);
       SetWindowSize(GetMonitorWidth(m), GetMonitorWidth(m));

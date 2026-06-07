@@ -26,6 +26,7 @@ extern int step;
 extern int rx,ry;
 extern char save_dir[255];
 extern Color rect_color;
+extern Vector2 before_rect_wpos;
 
 
 extern void sc_run(void);

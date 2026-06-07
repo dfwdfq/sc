@@ -9,6 +9,7 @@ int step  = 1;
 int rx = 100;
 int ry = 100;
 Color rect_color = MAGENTA;
+Vector2 before_rect_wpos;
 
 void sc_run(void)
 {
@@ -127,7 +128,7 @@ void take_rectangle_pic(void)
     }
   
   if(IsKeyReleased(KEY_ENTER))
-    {
+    {      
       X11Image ximg = take_x11_screenshot((int)rx,
 					  (int)ry,
 					  width,
@@ -136,6 +137,7 @@ void take_rectangle_pic(void)
       
       sc_state = StartMenu;
       SetWindowSize(200, 110);
+      SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
     }  
 }
 void take_fullscreen_pic(void)
