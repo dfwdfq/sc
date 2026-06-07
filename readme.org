@@ -56,3 +56,25 @@ You have *3* buttons. Each button is associated with a *key*.
 - *[R]ectangle*    :: press button or press *R* to start choosing rectangular area.
 - *[C]config menu* :: opens config menu.
 
+* Fullscreen
+Nothing special. Press *F* and screenshot is saved as /png/ image in specified directory.
+
+* Rectangle
+This is mode that provides ability to take screenshot of rectangular area, represented
+by rectangle with +magenta+ color.
+** Keybindings
+- *WASD/ARROWS* :: move rectangle around.
+- *Q*           :: increment rectangle's step.
+- *R*           :: decrement rectangle's step.
+- *Z*           :: increase rectangle's width by step.
+- *X*           :: increase rectangle's height by step.
+- *C*           :: decrease rectangle's width by step.
+- *V*           :: decrease rectangle's height by step.
+- *SPACE*       :: hide/show rectangle's border.
+- *ENTER*       :: take screenshot of area within rectangle.
+** Mouse
+- *Left Mouse Button*  :: set rectangle's top-left vertex position.
+- *Right Mouse Button* :: set rectangle's right-bottom vertex position.  
+** Notes
+- hit *SPACE* before pressing *ENTER*, unless you want to see rectangle's border on screenshot picture.
+- rectangle's step equals to 1 by default.  
