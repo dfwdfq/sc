@@ -48,5 +48,6 @@ That's why it fits into environment controlled by *tiling* window manager.
 
 * *sc* workflow
 When you execute program, first thing you see is initial menu.
+
 [[imgs/start_menu.png]]
 
