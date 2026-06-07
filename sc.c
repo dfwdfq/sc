@@ -8,6 +8,7 @@ int height= 200;
 int step  = 1;
 int rx = 100;
 int ry = 100;
+Color rect_color = MAGENTA;
 
 void sc_run(void)
 {
@@ -49,24 +50,93 @@ void sc_run(void)
 }
 void take_rectangle_pic(void)
 {
+  draw_rect();
   
-
-  if(IsKeyReleased(KEY_ENTER) ||
-     IsKeyPressed(KEY_SPACE))
+  if(IsKeyReleased(KEY_A) ||
+     IsKeyReleased(KEY_LEFT))
     {
-      Vector2 pos = GetWindowPosition();
+      rx-=step;
+    }
+  if(IsKeyReleased(KEY_D) ||
+     IsKeyReleased(KEY_RIGHT))
+    {
+      rx+=step;
+    }
+  if(IsKeyReleased(KEY_S) ||
+     IsKeyReleased(KEY_DOWN))
+    {
+      ry+=step;
+    }
+  if(IsKeyReleased(KEY_W) ||
+     IsKeyReleased(KEY_UP))
+    {
+      ry-=step;
+    }
 
-      X11Image ximg = take_x11_screenshot((int)pos.x,
-					  (int)pos.y,
+
+  if(IsKeyReleased(KEY_C))
+    {
+      if(width > step)
+	width-=step;
+    }  
+  if(IsKeyReleased(KEY_V))
+    {
+      if(height > step)
+	height-=step;
+    }
+  if(IsKeyReleased(KEY_Z))
+    {
+      width+=step;
+    }  
+  if(IsKeyReleased(KEY_X))
+    {
+      height+=step;
+    }
+ 
+  if(IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+    {
+      Vector2 pos = GetMousePosition();
+      rx = pos.x;
+      ry = pos.y;
+    }
+
+  if(IsKeyReleased(KEY_Q))
+    {
+      step+=1;
+    }
+  if(IsKeyReleased(KEY_E))
+    {
+      if(step > 2)
+	step-=1;
+    }
+
+  if(IsKeyReleased(KEY_SPACE))
+    {
+      if(rect_color.r == MAGENTA.r &&
+	 rect_color.g == MAGENTA.g &&
+	 rect_color.b == MAGENTA.b &&
+	 rect_color.a == MAGENTA.a)
+	{
+	  rect_color = BLANK;
+	}
+      else
+	{
+	  rect_color = MAGENTA;
+	}
+	 
+    }
+  
+  if(IsKeyReleased(KEY_ENTER))
+    {
+      X11Image ximg = take_x11_screenshot((int)rx,
+					  (int)ry,
 					  width,
 					  height);
       save_img(&ximg);
       
       sc_state = StartMenu;
       SetWindowSize(200, 110);
-      SetWindowPosition(pos.x, pos.y);
-    }
-  draw_rect();
+    }  
 }
 void take_fullscreen_pic(void)
 {
@@ -121,8 +191,8 @@ void save_img(X11Image* ximg)
 }
 void draw_rect(void)
 {
-  DrawRectangle(rx, ry, width, 2, MAGENTA);
-  DrawRectangle(rx, ry+height, width, 2, MAGENTA);
-  DrawRectangle(rx, ry, 2, height, MAGENTA);
-  DrawRectangle(rx+width, ry, 2, height, MAGENTA);
+  DrawRectangle(rx, ry, width, 2, rect_color);
+  DrawRectangle(rx, ry+height, width, 2, rect_color);
+  DrawRectangle(rx, ry, 2, height, rect_color);
+  DrawRectangle(rx+width, ry, 2, height, rect_color);
 }

@@ -25,6 +25,7 @@ extern bool width_edit, height_edit, text_edit;
 extern int step;
 extern int rx,ry;
 extern char save_dir[255];
+extern Color rect_color;
 
 
 extern void sc_run(void);
