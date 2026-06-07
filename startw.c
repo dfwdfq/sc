@@ -17,7 +17,7 @@ void _startw_draw(void)
       before_rect_wpos = GetWindowPosition();
       int m = GetCurrentMonitor();
       SetWindowPosition(0, 0);
-      SetWindowSize(GetMonitorWidth(m), GetMonitorWidth(m));
+      SetWindowSize(GetMonitorWidth(m), GetMonitorHeight(m));
     }
   if(GuiButton((Rectangle){0,90,200,20}, "[C]onfig menu") ||
      IsKeyPressed(KEY_C))
