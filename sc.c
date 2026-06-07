@@ -4,11 +4,14 @@
 
 State sc_state = StartMenu;
 int width = 250;
-int height=200;
+int height= 200;
+int step  = 1;
+int rx = 100;
+int ry = 100;
 
 void sc_run(void)
 {
-  SetConfigFlags(FLAG_WINDOW_TRANSPARENT | FLAG_WINDOW_TOPMOST);
+  SetConfigFlags(FLAG_WINDOW_TRANSPARENT | FLAG_WINDOW_TOPMOST | FLAG_WINDOW_UNDECORATED);
   InitWindow(200, 110, "sc");
   GuiLoadStyleEnefete();
   SetTargetFPS(60);
@@ -46,11 +49,6 @@ void sc_run(void)
 }
 void take_rectangle_pic(void)
 {
-  if(IsKeyReleased(KEY_LEFT) ||
-     IsKeyPressed(KEY_A))
-    {
-      //width-=1;
-    }
   
 
   if(IsKeyReleased(KEY_ENTER) ||
@@ -68,6 +66,7 @@ void take_rectangle_pic(void)
       SetWindowSize(200, 110);
       SetWindowPosition(pos.x, pos.y);
     }
+  draw_rect();
 }
 void take_fullscreen_pic(void)
 {
@@ -119,4 +118,11 @@ void save_img(X11Image* ximg)
   
   ExportImage(screenshot, full);
   UnloadImage(screenshot);   
+}
+void draw_rect(void)
+{
+  DrawRectangle(rx, ry, width, 2, MAGENTA);
+  DrawRectangle(rx, ry+height, width, 2, MAGENTA);
+  DrawRectangle(rx, ry, 2, height, MAGENTA);
+  DrawRectangle(rx+width, ry, 2, height, MAGENTA);
 }

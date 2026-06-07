@@ -22,6 +22,8 @@ extern State sc_state;
 //confw.c
 extern int width, height;
 extern bool width_edit, height_edit, text_edit;
+extern int step;
+extern int rx,ry;
 extern char save_dir[255];
 
 
@@ -39,5 +41,5 @@ extern void _confw_draw(void);
 //util.c
 extern void get_file_name(char* output);
 extern char* expand_homedir(char* path);
-
+extern void draw_rect(void);
 #endif /* SC_H */
