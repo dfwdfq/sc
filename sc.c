@@ -200,7 +200,8 @@ void save_img(X11Image* ximg)
       sprintf(full,"%s%s.png",save_dir,name);
     }
 
-  sprintf(last_save, "#112# %s.png\0", full);
+  sprintf(last_save, "#112# %s.png", full);
+  last_save[strlen(last_save)+10] = '\0';
   ExportImage(screenshot, full);
   UnloadImage(screenshot);
   sc_state = MessageBox;
