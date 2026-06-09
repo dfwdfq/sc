@@ -18,18 +18,17 @@ typedef enum State
   MessageBox
 } State;
 
-extern State sc_state;
 
-//confw.c
-extern int width, height;
-extern bool width_edit, height_edit, text_edit, step_edit;
-extern int step;
-extern int rx,ry;
-extern char save_dir[255];
+//sc.c
+extern State sc_state;
 extern char last_save[1060];
 extern Color rect_color;
 extern Vector2 before_rect_wpos;
+extern int width, height, step, rx, ry;
 
+//confw.c
+extern bool width_edit, height_edit, text_edit, step_edit;
+extern char save_dir[255];
 
 extern void sc_run(void);
 extern void take_fullscreen_pic(void);
