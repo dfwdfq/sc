@@ -147,10 +147,16 @@ void take_rectangle_pic(void)
 					  (int)ry,
 					  width,
 					  height);
-      save_img(&ximg);
-      
-      SetWindowSize(400, 100);
-      SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
+      if(!ximg.data)
+	{
+	  fprintf(stderr, "sc error: X11Image is NULL!");
+	}
+      else
+	{
+	  save_img(&ximg);      
+	  SetWindowSize(400, 100);
+	  SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
+	}
     }  
 }
 void take_fullscreen_pic(void)
@@ -161,10 +167,16 @@ void take_fullscreen_pic(void)
   WaitTime(1.0);
   
   X11Image ximg = take_x11_screenshot(-1,-1,-1,-1);
-  save_img(&ximg);
-
-  SetWindowSize(400, 100);
-  SetWindowPosition(pos.x, pos.y);
+  if(!ximg.data)
+    {
+      fprintf(stderr,"sc error: X11Image is NULL!");
+    }
+  else
+    {
+      save_img(&ximg);
+      SetWindowSize(400, 100);
+      SetWindowPosition(pos.x, pos.y);
+    }
 }
 void save_img(X11Image* ximg)
 {
