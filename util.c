@@ -23,7 +23,8 @@ char* expand_homedir(char* path)
       return NULL;
     }
 
-  char* res = malloc((strlen(home)+strlen(path)));
+  size_t len = strlen(home) + strlen(path+1) + 2;  
+  char* res = malloc(len);
   if(!res)
     {
       perror("malloc");
