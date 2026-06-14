@@ -228,7 +228,7 @@ void draw_rect(void)
 void draw_message_box(void)
 {
   GuiLabel((Rectangle){10,10,180,20}, "Screenshot saved:");
-  GuiLabel((Rectangle){10,30,345,40}, last_save);
+  GuiLabel((Rectangle){10,30,350,40}, last_save);
 
   if(GuiButton((Rectangle){160,70,60,20}, "[O]k") ||
      IsKeyPressed(KEY_O))
