@@ -142,7 +142,11 @@ void take_rectangle_pic(void)
     }
   
   if(IsKeyReleased(KEY_ENTER))
-    {      
+    {
+      //prevent x11 from crushing at this edge case
+      if(rx < 0) rx = 0;
+      if(ry < 0) ry = 0;
+      
       X11Image ximg = take_x11_screenshot((int)rx,
 					  (int)ry,
 					  width,
