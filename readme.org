@@ -13,9 +13,9 @@ X11 screenshot tool
 If *Xlib* and *Raylib* are installed, then it's simple:
 #+END_VERSE
 #+BEGIN_SRC bash
-  cd sc_source/
+  cd sc
   mkdir build && cd build
-  cmake -S .. -B
+  cmake -S .. -B .
   make
 #+END_SRC
 
