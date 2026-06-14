@@ -161,9 +161,9 @@ void take_rectangle_pic(void)
 }
 void take_fullscreen_pic(void)
 {
+  Vector2 pos = GetWindowPosition();
   SetWindowSize(1, 1);
   SetWindowPosition(-1, -1);
-  Vector2 pos = GetWindowPosition();
   WaitTime(1.0);
   
   X11Image ximg = take_x11_screenshot(-1,-1,-1,-1);
