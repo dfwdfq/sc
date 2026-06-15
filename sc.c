@@ -41,6 +41,7 @@ void sc_run(void)
 	  take_fullscreen_pic();
 	  break;
 	case RectangleMode:
+	  SetExitKey(KEY_NULL);
 	  take_rectangle_pic();
 	  break;
 	case MessageBox:
@@ -161,7 +162,15 @@ void take_rectangle_pic(void)
 	  SetWindowSize(400, 100);
 	  SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
 	}
-    }  
+    }
+  
+  if(IsKeyReleased(KEY_ESCAPE))
+    {
+      sc_state = StartMenu;
+      SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
+      SetWindowSize(200, 110);
+      SetExitKey(KEY_ESCAPE);
+    }
 }
 void take_fullscreen_pic(void)
 {
