@@ -12,6 +12,7 @@ Color rect_color = MAGENTA;
 Vector2 before_rect_wpos;
 char last_save[1060];
 bool image_failed = false;
+char error_message[256];
 
 void sc_run(void)
 {
@@ -187,9 +188,9 @@ void save_img(X11Image* ximg)
       sc_state = StartMenu;
       SetWindowSize(200, 110);
       image_failed = true;
+      strcpy(error_message,"Error: X11Image creation failed!");
       return;
     }
-  
   Image screenshot =
     {
       .data = ximg->data,
@@ -206,14 +207,30 @@ void save_img(X11Image* ximg)
   if(save_dir[0] == '~')    
     {
       char* dir = expand_homedir(save_dir);
+      if(!check_dir_available(dir))
+	{
+	  sc_state = StartMenu;
+	  SetWindowSize(200, 110);
+	  image_failed = true;
+	  snprintf(error_message, 255, "Error: %s is not available!", dir);
+	}
+      
       sprintf(full,"%s%s.png",dir,name);
       free(dir);
     }
   else
     {
+      if(!check_dir_available(save_dir))
+	{
+	  sc_state = StartMenu;
+	  SetWindowSize(200, 110);
+	  image_failed = true;
+	  snprintf(error_message, 255, "Error: %s is not available!", save_dir);
+	}
       sprintf(full,"%s%s.png",save_dir,name);
     }
-
+  
+  
   sprintf(last_save, "#112# %s.png", full);
   last_save[strlen(last_save)+10] = '\0';
   ExportImage(screenshot, full);
@@ -236,7 +253,8 @@ void draw_message_box(void)
     }
   else
     {
-      GuiLabel((Rectangle){100,30,350,40}, "#113# Image creation failed!");
+      GuiLabel((Rectangle){100,30,350,20}, "#113# Image creation failed!");
+      GuiLabel((Rectangle){60,30,300,50}, error_message);
     }
 
   if(GuiButton((Rectangle){160,70,60,20}, "[O]k") ||

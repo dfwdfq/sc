@@ -6,6 +6,8 @@
 #include<stdbool.h>
 #include<stdio.h>
 #include<time.h>
+#include<dirent.h>
+#include<sys/types.h>
 #include"raygui.h"
 #include"x11screenshot.h"
 
@@ -22,6 +24,7 @@ typedef enum State
 //sc.c
 extern State sc_state;
 extern char last_save[1060];
+extern char error_message[256];
 extern Color rect_color;
 extern Vector2 before_rect_wpos;
 extern int width, height, step, rx, ry;
@@ -47,4 +50,5 @@ extern void _confw_draw(void);
 //util.c
 extern void get_file_name(char* output);
 extern char* expand_homedir(char* path);
+extern bool check_dir_available(const char* dir);
 #endif /* SC_H */
