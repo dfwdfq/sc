@@ -33,3 +33,11 @@ char* expand_homedir(char* path)
   sprintf(res, "%s%s/",home,path+1);
   return res;
 }
+bool check_dir_available(const char* dir)
+{
+  DIR* fd = opendir(dir);
+  if(!fd) return false;
+
+  closedir(fd);
+  return true;
+}
