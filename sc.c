@@ -152,16 +152,9 @@ void take_rectangle_pic(void)
 					  (int)ry,
 					  width,
 					  height);
-      if(!ximg.data)
-	{
-	  fprintf(stderr, "sc error: X11Image is NULL!");
-	}
-      else
-	{
-	  save_img(&ximg);      
-	  SetWindowSize(400, 100);
-	  SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
-	}
+      save_img(&ximg);      
+      SetWindowSize(400, 100);
+      SetWindowPosition(before_rect_wpos.x, before_rect_wpos.y);
     }
   
   if(IsKeyReleased(KEY_ESCAPE))
