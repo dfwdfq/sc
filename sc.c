@@ -17,6 +17,7 @@ char error_message[256];
 void sc_run(void)
 {
   SetConfigFlags(FLAG_WINDOW_TRANSPARENT | FLAG_WINDOW_TOPMOST | FLAG_WINDOW_UNDECORATED);
+  SetTraceLogLevel(LOG_NONE);
   InitWindow(200, 110, "sc");
   GuiLoadStyleEnefete();
   SetTargetFPS(60);
