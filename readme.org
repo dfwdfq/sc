@@ -72,6 +72,7 @@ by rectangle with +magenta+ color.
 - *V*           :: decrease rectangle's height by step.
 - *SPACE*       :: hide/show rectangle's border.
 - *ENTER*       :: take screenshot of area within rectangle.
+- ESCAPE      :: quit Rectangle mode.  
 ** Mouse
 - *Left Mouse Button*  :: set rectangle's top-left vertex position.
 - *Right Mouse Button* :: set rectangle's right-bottom vertex position.  
