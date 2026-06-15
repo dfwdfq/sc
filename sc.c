@@ -11,6 +11,7 @@ int ry = 100;
 Color rect_color = MAGENTA;
 Vector2 before_rect_wpos;
 char last_save[1060];
+bool image_failed = false;
 
 void sc_run(void)
 {
@@ -185,6 +186,7 @@ void save_img(X11Image* ximg)
       fprintf(stderr,"Failed to capture screenshot\n");
       sc_state = StartMenu;
       SetWindowSize(200, 110);
+      image_failed = true;
       return;
     }
   
@@ -227,13 +229,21 @@ void draw_rect(void)
 }
 void draw_message_box(void)
 {
-  GuiLabel((Rectangle){10,10,180,20}, "Screenshot saved:");
-  GuiLabel((Rectangle){10,30,350,40}, last_save);
+  if(!image_failed)
+    {
+      GuiLabel((Rectangle){10,10,180,20}, "Screenshot saved:");
+      GuiLabel((Rectangle){10,30,350,40}, last_save);
+    }
+  else
+    {
+      GuiLabel((Rectangle){100,30,350,40}, "#113# Image creation failed!");
+    }
 
   if(GuiButton((Rectangle){160,70,60,20}, "[O]k") ||
      IsKeyPressed(KEY_O))
     {
       SetWindowSize(200, 110);
       sc_state = StartMenu;
+      image_failed = false;
     }
 }

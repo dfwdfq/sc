@@ -25,6 +25,7 @@ extern char last_save[1060];
 extern Color rect_color;
 extern Vector2 before_rect_wpos;
 extern int width, height, step, rx, ry;
+extern bool image_failed;
 
 //confw.c
 extern bool width_edit, height_edit, text_edit, step_edit;
