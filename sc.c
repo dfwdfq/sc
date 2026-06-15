@@ -35,19 +35,24 @@ void sc_run(void)
       switch(sc_state)
 	{
 	case StartMenu:
+	  SetWindowFocused();
 	  _startw_draw();
 	  break;
 	case ConfMenu:
+	  SetWindowFocused();
 	  _confw_draw();
 	  break;
 	case FullscreenMode:
+	  SetWindowFocused();
 	  take_fullscreen_pic();
 	  break;
 	case RectangleMode:
+	  SetWindowFocused();
 	  SetExitKey(KEY_NULL);
 	  take_rectangle_pic();
 	  break;
 	case MessageBox:
+	  SetWindowFocused();
 	  draw_message_box();
 	  break;
 	}
