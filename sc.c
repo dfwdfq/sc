@@ -238,7 +238,7 @@ void save_img(X11Image* ximg)
   
   
   sprintf(last_save, "#112# %s.png", full);
-  last_save[strlen(last_save)+10] = '\0';
+  last_save[strlen(last_save)-4] = '\0'; //#112# is 4 characters
   ExportImage(screenshot, full);
   UnloadImage(screenshot);
   sc_state = MessageBox;
